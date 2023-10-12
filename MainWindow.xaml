@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="btnOrderNummers" Content="Order nummers" HorizontalAlignment="Left" Margin="50,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.871,0.732" Click="btnOrderNummers_Click"/>
-        <Button x:Name="btnFillNummers" Content="Fill nummers" HorizontalAlignment="Left" Margin="50,104,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.612,0.547" Click="btnFillNummers_Click"/>
-
+        <Button x:Name="btnFillTable1" Content="Fill Table 1" HorizontalAlignment="Left" Margin="50,30,0,0" VerticalAlignment="Top" Click="btnFillTable1_Click"/>
+        <Button x:Name="btnSortTable2" Content="Sort and Fill Table 2" HorizontalAlignment="Left" Margin="50,60,0,0" VerticalAlignment="Top" Click="btnSortTable2_Click"/>
+        <DataGrid x:Name="dgTable2" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="514,0,0,0"/>
     </Grid>
 </Window>

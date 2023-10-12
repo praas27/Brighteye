@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,19 +21,33 @@ namespace Brighteye
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Declaratie  db context
+        private NumberContext dbContext;
+
         public MainWindow()
         {
             InitializeComponent();
+            // Initialiseren  dbcontext
+            dbContext = new NumberContext();
         }
 
-        private void btnOrderNummers_Click(object sender, RoutedEventArgs e)
+        private void btnFillTable1_Click(object sender, RoutedEventArgs e)
         {
+            // Generate random nummers van 1 tot 10
+            var randomNumbers = Enumerable.Range(1, 10).OrderBy(_ => Guid.NewGuid()).ToList();
 
+            // nummers opslaan
+            dbContext.Number.AddRange(randomNumbers.Select(n => new NumberEntity { Number = n }));
+            dbContext.SaveChanges();
         }
 
-        private void btnFillNummers_Click(object sender, RoutedEventArgs e)
+        private void btnSortTable2_Click(object sender, RoutedEventArgs e)
         {
+            // Gesorteede data opvragen van tabel 1
+            var sortedNumbers = dbContext.Number.OrderBy(n => n.Number).ToList();
 
+            // Data vullen in table 2
+            dgTable2.ItemsSource = sortedNumbers;
         }
     }
 }
